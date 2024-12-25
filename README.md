@@ -35,6 +35,15 @@ DB_PASSWORD=your_database_password
 php artisan migrate --seed
 ```
 
+#### Run:
+
+```
+php artisan queue:work
+```
+```
+php artisan schedule:work
+```
+
 #### Serve Application
 
 ```
