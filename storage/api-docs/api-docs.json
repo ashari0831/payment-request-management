@@ -526,14 +526,14 @@
                 }
             }
         },
-        "/api/carts/{cart}/products/{product}/attach": {
+        "/api/carts/{cart}/products/{product}/detach": {
             "post": {
                 "tags": [
                     "Carts"
                 ],
                 "summary": "Detach product from  cart",
                 "description": "Detach product from a cart",
-                "operationId": "3a5cb7b452b1fefd5cba62636d806474",
+                "operationId": "193dd2373c04bd604badad40e55120b7",
                 "parameters": [
                     {
                         "name": "Accept",
