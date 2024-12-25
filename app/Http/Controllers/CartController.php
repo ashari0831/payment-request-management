@@ -206,7 +206,7 @@ class CartController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/carts/{cart}/products/{product}/attach",
+     *     path="/api/carts/{cart}/products/{product}/detach",
      *     summary="Detach product from  cart",
      *     description="Detach product from a cart",
      *     tags={"Carts"},
