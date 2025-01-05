@@ -1,6 +1,7 @@
 <?php
 
-use App\Jobs\RemoveExpiredCarts;
+use App\Jobs\Pay;
+use App\Jobs\PayApprovedPaymentRequests;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -15,7 +16,6 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'ensureProductQuantity' => \App\Http\Middleware\EnsureProductQuantity::class,
             'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
         ]);
     })
@@ -23,5 +23,6 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withSchedule(function (Schedule $schedule) {
-        $schedule->job(new RemoveExpiredCarts)->hourly();
+        // payments will be processed every day at 08:00 Asia/Tehran
+        $schedule->job(new PayApprovedPaymentRequests)->dailyAt("8:00");
     })->create();

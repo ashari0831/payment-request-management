@@ -2,17 +2,20 @@
 
 namespace Database\Seeders;
 
+use App\Models\PaymentCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Role;
 
-class RolesAndPermissionsSeeder extends Seeder
+class PaymentCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Role::create(['name' => 'admin']);
+        PaymentCategory::insert([
+            ['title' => 'حمل و نقل'],
+            ['title' => 'خرید تجهیزات '],
+        ]);
     }
 }

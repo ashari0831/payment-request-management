@@ -7,14 +7,14 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ProductCreated extends Notification implements ShouldQueue
+class PaymentRequestRejected extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(public $product)
+    public function __construct(public $paymentRequest)
     {
         //
     }
@@ -35,13 +35,11 @@ class ProductCreated extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('New Product Has Been Created')
-            ->line('New product has been created.')
-            ->line('Product ID: ' . $this->product->id)
-            ->line('Product Name: ' . $this->product->name)
-            ->line('Product Price: ' . $this->product->price)
-            ->line('Product Quantity: ' . $this->product->quantity)
-            ->line('Thank you!');
+            ->subject('Payment Request Has Been Rejected')
+            ->line('Payment request has been rejected.')
+            ->line('Rejecting reason: ' . end($this->paymentRequest->comments))
+            ->line('Category: ' . $this->paymentRequest->paymentCategory->title)
+            ->line('Price: ' . $this->paymentRequest->price);
     }
 
     /**

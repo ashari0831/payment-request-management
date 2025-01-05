@@ -15,8 +15,9 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'user',
-            'email' => 'test@test.com',
-            'password' => '123'
+            'email' => 'user@test.com',
+            'password' => '123',
+            'national_code' => '1123456789',
         ]);
     }
 }

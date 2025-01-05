@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PaymentRequestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -11,18 +10,18 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::middleware('role:admin')->group(function () {
+        Route::get('/payment-requests', [PaymentRequestController::class, 'index']);
 
-        Route::post('/products', [ProductController::class, 'store']);
+        Route::post('/payment-requests/change-status', [PaymentRequestController::class, 'changeStatus']);
 
-        Route::apiResource('/carts', CartController::class)->only(['index', 'show']);
+        Route::get('/files/{file}/download', [PaymentRequestController::class, 'downloadAttachment']);
+
+        Route::post('/payment-requests/pay', [PaymentRequestController::class, 'payPaymentRequests']);
     });
 
-    Route::get('/user/cart', [CartController::class, 'showAuthUserCart']);
+    Route::post('/payment-requests', [PaymentRequestController::class, 'store']);
 
-    Route::post('/carts/products/{product}/attach', [CartController::class, 'attachProduct'])->middleware('ensureProductQuantity');
-    Route::post('/carts/{cart}/products/{product}/detach', [CartController::class, 'detachProduct']);
-
-    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+    Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::get('/user', function (Request $request) {
         return $request->user();

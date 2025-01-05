@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
+use App\Models\Role;
 
 class AdminUserSeeder extends Seeder
 {
@@ -16,8 +16,9 @@ class AdminUserSeeder extends Seeder
     {
         $user = User::create([
             'name' => 'admin',
-            'email' => 'mehefil951@owube.com',
-            'password' => '123'
+            'email' => 'admin@test.com',
+            'password' => '123',
+            'national_code' => '0123456789',
         ]);
 
         $adminRole = Role::where('name', 'admin')->first();

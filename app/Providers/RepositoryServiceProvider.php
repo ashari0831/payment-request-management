@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use App\Interfaces\Interfaces\CartRepositoryInterface;
-use App\Interfaces\ProductRepositoryInterface;
-use App\Repositories\CartRepository;
+use App\Interfaces\BankRepositoryInterface;
+use App\Interfaces\PaymentRequestRepositoryInterface;
+use App\Repositories\BankRepository;
+use App\Repositories\PaymentRequestRepository;
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\ProductRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -15,8 +15,8 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
-        $this->app->bind(CartRepositoryInterface::class, CartRepository::class);
+        $this->app->bind(PaymentRequestRepositoryInterface::class, PaymentRequestRepository::class);
+        $this->app->bind(BankRepositoryInterface::class, BankRepository::class);
     }
 
     /**

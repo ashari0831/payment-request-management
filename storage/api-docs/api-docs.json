@@ -145,39 +145,16 @@
                 }
             }
         },
-        "/api/carts": {
+        "/api/payment-requests": {
             "get": {
                 "tags": [
-                    "Carts"
+                    "Payment Requests"
                 ],
-                "summary": "List carts",
-                "description": "List carts",
-                "operationId": "88963ab10a86ebeb4e81c70489a3ee39",
-                "parameters": [
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "Accept header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "application/json"
-                        }
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Authorization header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "Bearer {token}"
-                        }
-                    }
-                ],
+                "summary": "List payment requests",
+                "operationId": "8b205941c01a4a8cf9a54dc327b1c0b3",
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Successful response",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -191,111 +168,103 @@
                                             "items": {
                                                 "properties": {
                                                     "id": {
-                                                        "type": "integer",
-                                                        "example": 1
+                                                        "type": "string",
+                                                        "example": "9de57955-998d-4345-ac43-405d145896b1"
                                                     },
                                                     "status": {
                                                         "type": "string",
                                                         "example": "pending"
                                                     },
-                                                    "products": {
-                                                        "type": "array",
-                                                        "items": {
-                                                            "properties": {
-                                                                "id": {
-                                                                    "type": "integer",
-                                                                    "example": 1
-                                                                },
-                                                                "name": {
-                                                                    "type": "string",
-                                                                    "example": "product1"
-                                                                },
-                                                                "description": {
-                                                                    "type": "string",
-                                                                    "example": "desc"
-                                                                },
-                                                                "price": {
-                                                                    "type": "number",
-                                                                    "format": "int",
-                                                                    "example": 5000
-                                                                },
-                                                                "stock_quantity": {
-                                                                    "type": "integer",
-                                                                    "example": 10
-                                                                },
-                                                                "image_url": {
-                                                                    "type": "string",
-                                                                    "example": null,
-                                                                    "nullable": true
-                                                                },
-                                                                "created_at": {
-                                                                    "type": "string",
-                                                                    "format": "date-time",
-                                                                    "example": "2024-12-25T09:58:53.000000Z"
-                                                                },
-                                                                "updated_at": {
-                                                                    "type": "string",
-                                                                    "format": "date-time",
-                                                                    "example": "2024-12-25T09:58:53.000000Z"
-                                                                },
-                                                                "pivot": {
-                                                                    "properties": {
-                                                                        "cart_id": {
-                                                                            "type": "integer",
-                                                                            "example": 1
-                                                                        },
-                                                                        "product_id": {
-                                                                            "type": "integer",
-                                                                            "example": 1
-                                                                        }
-                                                                    },
-                                                                    "type": "object"
-                                                                }
+                                                    "file_id": {
+                                                        "type": "string",
+                                                        "example": "9de57955-839c-4d20-bbaa-181fce9efa96"
+                                                    },
+                                                    "payment_category": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string",
+                                                                "example": "9de1a27b-c068-4611-96fd-9bd9fd1f7a3c"
                                                             },
-                                                            "type": "object"
-                                                        }
+                                                            "title": {
+                                                                "type": "string",
+                                                                "example": "حمل و نقل"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2025-01-03T17:09:52.000000Z"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2025-01-03T17:09:52.000000Z"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "desc"
+                                                    },
+                                                    "price": {
+                                                        "type": "integer",
+                                                        "example": 12000
+                                                    },
+                                                    "sheba_number": {
+                                                        "type": "string",
+                                                        "example": "123456789123456789123456"
                                                     },
                                                     "user": {
                                                         "properties": {
                                                             "id": {
-                                                                "type": "integer",
-                                                                "example": 1
+                                                                "type": "string",
+                                                                "example": "9de19ee8-58d7-4998-96c2-e12a4eaea912"
                                                             },
                                                             "name": {
                                                                 "type": "string",
-                                                                "example": "admin"
+                                                                "example": "user"
                                                             },
                                                             "email": {
                                                                 "type": "string",
-                                                                "example": "mehefil951@owube.com"
+                                                                "example": "user@test.com"
+                                                            },
+                                                            "national_code": {
+                                                                "type": "string",
+                                                                "example": "1123456789"
                                                             },
                                                             "email_verified_at": {
                                                                 "type": "string",
+                                                                "format": "date-time",
                                                                 "example": null,
                                                                 "nullable": true
                                                             },
                                                             "created_at": {
                                                                 "type": "string",
                                                                 "format": "date-time",
-                                                                "example": "2024-12-24T16:45:20.000000Z"
+                                                                "example": "2025-01-03T16:59:52.000000Z"
                                                             },
                                                             "updated_at": {
                                                                 "type": "string",
                                                                 "format": "date-time",
-                                                                "example": "2024-12-24T16:45:20.000000Z"
+                                                                "example": "2025-01-03T16:59:52.000000Z"
                                                             }
                                                         },
                                                         "type": "object"
                                                     },
+                                                    "comments": {
+                                                        "type": "string",
+                                                        "example": null,
+                                                        "nullable": true
+                                                    },
                                                     "created_at": {
                                                         "type": "string",
                                                         "format": "date-time",
-                                                        "example": "2024-12-25T12:37:05.000000Z"
+                                                        "example": "2025-01-05T14:58:07.000000Z"
                                                     },
                                                     "updated_at": {
                                                         "type": "string",
                                                         "format": "date-time",
-                                                        "example": "2024-12-25T12:37:05.000000Z"
+                                                        "example": "2025-01-05T14:58:07.000000Z"
                                                     }
                                                 },
                                                 "type": "object"
@@ -308,183 +277,17 @@
                         }
                     }
                 }
-            }
-        },
-        "/api/carts/{cart}": {
-            "get": {
-                "tags": [
-                    "Carts"
-                ],
-                "summary": "Show a cart",
-                "description": "Show a cart",
-                "operationId": "734019138d25952df063202e5d0207f7",
-                "parameters": [
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "Accept header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "application/json"
-                        }
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Authorization header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "Bearer {token}"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "data": {
-                                            "properties": {
-                                                "id": {
-                                                    "type": "integer",
-                                                    "example": 1
-                                                },
-                                                "status": {
-                                                    "type": "string",
-                                                    "example": "pending"
-                                                },
-                                                "products": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "properties": {
-                                                            "id": {
-                                                                "type": "integer",
-                                                                "example": 1
-                                                            },
-                                                            "name": {
-                                                                "type": "string",
-                                                                "example": "product1"
-                                                            },
-                                                            "description": {
-                                                                "type": "string",
-                                                                "example": "desc"
-                                                            },
-                                                            "price": {
-                                                                "type": "number",
-                                                                "format": "int",
-                                                                "example": 5000
-                                                            },
-                                                            "stock_quantity": {
-                                                                "type": "integer",
-                                                                "example": 10
-                                                            },
-                                                            "image_url": {
-                                                                "type": "string",
-                                                                "example": null,
-                                                                "nullable": true
-                                                            },
-                                                            "created_at": {
-                                                                "type": "string",
-                                                                "format": "date-time",
-                                                                "example": "2024-12-25T09:58:53.000000Z"
-                                                            },
-                                                            "updated_at": {
-                                                                "type": "string",
-                                                                "format": "date-time",
-                                                                "example": "2024-12-25T09:58:53.000000Z"
-                                                            },
-                                                            "pivot": {
-                                                                "properties": {
-                                                                    "cart_id": {
-                                                                        "type": "integer",
-                                                                        "example": 1
-                                                                    },
-                                                                    "product_id": {
-                                                                        "type": "integer",
-                                                                        "example": 1
-                                                                    }
-                                                                },
-                                                                "type": "object"
-                                                            }
-                                                        },
-                                                        "type": "object"
-                                                    }
-                                                },
-                                                "user": {
-                                                    "properties": {
-                                                        "id": {
-                                                            "type": "integer",
-                                                            "example": 1
-                                                        },
-                                                        "name": {
-                                                            "type": "string",
-                                                            "example": "admin"
-                                                        },
-                                                        "email": {
-                                                            "type": "string",
-                                                            "example": "mehefil951@owube.com"
-                                                        },
-                                                        "email_verified_at": {
-                                                            "type": "string",
-                                                            "example": null,
-                                                            "nullable": true
-                                                        },
-                                                        "created_at": {
-                                                            "type": "string",
-                                                            "format": "date-time",
-                                                            "example": "2024-12-24T16:45:20.000000Z"
-                                                        },
-                                                        "updated_at": {
-                                                            "type": "string",
-                                                            "format": "date-time",
-                                                            "example": "2024-12-24T16:45:20.000000Z"
-                                                        }
-                                                    },
-                                                    "type": "object"
-                                                },
-                                                "created_at": {
-                                                    "type": "string",
-                                                    "format": "date-time",
-                                                    "example": "2024-12-25T12:37:05.000000Z"
-                                                },
-                                                "updated_at": {
-                                                    "type": "string",
-                                                    "format": "date-time",
-                                                    "example": "2024-12-25T12:37:05.000000Z"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/carts/products/{product}/attach": {
+            },
             "post": {
                 "tags": [
-                    "Carts"
+                    "Payment Requests"
                 ],
-                "summary": "Attach product to cart",
-                "description": "Attach product to cart",
-                "operationId": "56c2292c30652b871c6d6121abd33a9a",
+                "summary": "Create a new payment request",
+                "operationId": "7bf68c14ac94dae94b62d8e0bfe4747e",
                 "parameters": [
                     {
                         "name": "Accept",
                         "in": "header",
-                        "description": "Accept header",
                         "required": true,
                         "schema": {
                             "type": "string",
@@ -494,277 +297,6 @@
                     {
                         "name": "Authorization",
                         "in": "header",
-                        "description": "Authorization header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "Bearer {token}"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "data": {
-                                            "type": "string",
-                                            "example": "Cart Product Attach Successful"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/carts/{cart}/products/{product}/detach": {
-            "post": {
-                "tags": [
-                    "Carts"
-                ],
-                "summary": "Detach product from  cart",
-                "description": "Detach product from a cart",
-                "operationId": "193dd2373c04bd604badad40e55120b7",
-                "parameters": [
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "Accept header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "application/json"
-                        }
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Authorization header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "Bearer {token}"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "data": {
-                                            "type": "string",
-                                            "example": "Cart Product Detach Successful"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/user/cart": {
-            "get": {
-                "tags": [
-                    "Carts"
-                ],
-                "summary": "Show auth user cart",
-                "description": "Show auth user cart",
-                "operationId": "10f722d61b1ff47cd99d63f5fe2f763d",
-                "parameters": [
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "Accept header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "application/json"
-                        }
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Authorization header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "Bearer {token}"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "data": {
-                                            "properties": {
-                                                "id": {
-                                                    "type": "integer",
-                                                    "example": 1
-                                                },
-                                                "status": {
-                                                    "type": "string",
-                                                    "example": "pending"
-                                                },
-                                                "products": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "properties": {
-                                                            "id": {
-                                                                "type": "integer",
-                                                                "example": 1
-                                                            },
-                                                            "name": {
-                                                                "type": "string",
-                                                                "example": "product1"
-                                                            },
-                                                            "description": {
-                                                                "type": "string",
-                                                                "example": "desc"
-                                                            },
-                                                            "price": {
-                                                                "type": "number",
-                                                                "format": "int",
-                                                                "example": 5000
-                                                            },
-                                                            "stock_quantity": {
-                                                                "type": "integer",
-                                                                "example": 10
-                                                            },
-                                                            "image_url": {
-                                                                "type": "string",
-                                                                "example": null,
-                                                                "nullable": true
-                                                            },
-                                                            "created_at": {
-                                                                "type": "string",
-                                                                "format": "date-time",
-                                                                "example": "2024-12-25T09:58:53.000000Z"
-                                                            },
-                                                            "updated_at": {
-                                                                "type": "string",
-                                                                "format": "date-time",
-                                                                "example": "2024-12-25T09:58:53.000000Z"
-                                                            },
-                                                            "pivot": {
-                                                                "properties": {
-                                                                    "cart_id": {
-                                                                        "type": "integer",
-                                                                        "example": 1
-                                                                    },
-                                                                    "product_id": {
-                                                                        "type": "integer",
-                                                                        "example": 1
-                                                                    }
-                                                                },
-                                                                "type": "object"
-                                                            }
-                                                        },
-                                                        "type": "object"
-                                                    }
-                                                },
-                                                "user": {
-                                                    "properties": {
-                                                        "id": {
-                                                            "type": "integer",
-                                                            "example": 1
-                                                        },
-                                                        "name": {
-                                                            "type": "string",
-                                                            "example": "admin"
-                                                        },
-                                                        "email": {
-                                                            "type": "string",
-                                                            "example": "mehefil951@owube.com"
-                                                        },
-                                                        "email_verified_at": {
-                                                            "type": "string",
-                                                            "example": null,
-                                                            "nullable": true
-                                                        },
-                                                        "created_at": {
-                                                            "type": "string",
-                                                            "format": "date-time",
-                                                            "example": "2024-12-24T16:45:20.000000Z"
-                                                        },
-                                                        "updated_at": {
-                                                            "type": "string",
-                                                            "format": "date-time",
-                                                            "example": "2024-12-24T16:45:20.000000Z"
-                                                        }
-                                                    },
-                                                    "type": "object"
-                                                },
-                                                "created_at": {
-                                                    "type": "string",
-                                                    "format": "date-time",
-                                                    "example": "2024-12-25T12:37:05.000000Z"
-                                                },
-                                                "updated_at": {
-                                                    "type": "string",
-                                                    "format": "date-time",
-                                                    "example": "2024-12-25T12:37:05.000000Z"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/products": {
-            "post": {
-                "tags": [
-                    "Products"
-                ],
-                "summary": "Store a new product",
-                "description": "Creates a new product and notifies the admin",
-                "operationId": "e8185e307706e2cd84bbcf5171e2f09d",
-                "parameters": [
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "Accept header",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "application/json"
-                        }
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Authorization header",
                         "required": true,
                         "schema": {
                             "type": "string",
@@ -778,23 +310,37 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "name": {
+                                    "payment_category_id": {
+                                        "description": "ID of the payment category",
                                         "type": "string",
-                                        "example": "Product Name"
+                                        "format": "uuid",
+                                        "example": "9de1a27b-c068-4611-96fd-9bd9fd1f7a3c"
                                     },
                                     "description": {
+                                        "description": "Description of the payment request",
                                         "type": "string",
-                                        "example": "Product Description"
+                                        "example": "desc",
+                                        "nullable": true
                                     },
                                     "price": {
-                                        "type": "number",
-                                        "format": "int",
-                                        "example": 10000
+                                        "description": "Price of the payment request",
+                                        "type": "integer",
+                                        "example": 12000
                                     },
-                                    "stock_quantity": {
-                                        "type": "number",
-                                        "format": "int",
-                                        "example": 50
+                                    "file": {
+                                        "description": "File attachment for the payment request",
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "sheba_number": {
+                                        "description": "Sheba number for the payment request",
+                                        "type": "string",
+                                        "example": "123456789123456789123456"
+                                    },
+                                    "national_code": {
+                                        "description": "National code of the user",
+                                        "type": "string",
+                                        "example": "1123456789"
                                     }
                                 },
                                 "type": "object"
@@ -803,8 +349,8 @@
                     }
                 },
                 "responses": {
-                    "201": {
-                        "description": "Created",
+                    "200": {
+                        "description": "Payment Request Create Successful",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -816,43 +362,459 @@
                                         "data": {
                                             "properties": {
                                                 "id": {
-                                                    "type": "integer",
-                                                    "example": 1
-                                                },
-                                                "name": {
                                                     "type": "string",
-                                                    "example": "name"
+                                                    "example": "9de57955-998d-4345-ac43-405d145896b1"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "example": "pending"
+                                                },
+                                                "file_id": {
+                                                    "type": "string",
+                                                    "example": "9de57955-839c-4d20-bbaa-181fce9efa96"
+                                                },
+                                                "payment_category": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string",
+                                                            "example": "9de1a27b-c068-4611-96fd-9bd9fd1f7a3c"
+                                                        },
+                                                        "title": {
+                                                            "type": "string",
+                                                            "example": "حمل و نقل"
+                                                        },
+                                                        "created_at": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "example": "2025-01-03T17:09:52.000000Z"
+                                                        },
+                                                        "updated_at": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "example": "2025-01-03T17:09:52.000000Z"
+                                                        }
+                                                    },
+                                                    "type": "object"
                                                 },
                                                 "description": {
                                                     "type": "string",
                                                     "example": "desc"
                                                 },
                                                 "price": {
-                                                    "type": "number",
-                                                    "format": "int",
-                                                    "example": 10000
+                                                    "type": "integer",
+                                                    "example": 12000
                                                 },
-                                                "stock_quantity": {
-                                                    "type": "number",
-                                                    "format": "int",
-                                                    "example": 50
+                                                "sheba_number": {
+                                                    "type": "string",
+                                                    "example": "123456789123456789123456"
+                                                },
+                                                "user": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string",
+                                                            "example": "9de19ee8-58d7-4998-96c2-e12a4eaea912"
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "example": "user"
+                                                        },
+                                                        "email": {
+                                                            "type": "string",
+                                                            "example": "user@test.com"
+                                                        },
+                                                        "national_code": {
+                                                            "type": "string",
+                                                            "example": "1123456789"
+                                                        },
+                                                        "email_verified_at": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "example": null,
+                                                            "nullable": true
+                                                        },
+                                                        "created_at": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "example": "2025-01-03T16:59:52.000000Z"
+                                                        },
+                                                        "updated_at": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "example": "2025-01-03T16:59:52.000000Z"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "comments": {
+                                                    "type": "string",
+                                                    "example": null,
+                                                    "nullable": true
                                                 },
                                                 "created_at": {
                                                     "type": "string",
                                                     "format": "date-time",
-                                                    "example": "2024-12-25T15:59:42.000000Z"
+                                                    "example": "2025-01-05T14:58:07.000000Z"
                                                 },
                                                 "updated_at": {
                                                     "type": "string",
                                                     "format": "date-time",
-                                                    "example": "2024-12-25T15:59:42.000000Z"
+                                                    "example": "2025-01-05T14:58:07.000000Z"
                                                 }
                                             },
                                             "type": "object"
                                         },
                                         "message": {
                                             "type": "string",
-                                            "example": "Product Create Successful"
+                                            "example": "Payment Request Create Successful"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payment-requests/change-status": {
+            "post": {
+                "tags": [
+                    "Payment Requests"
+                ],
+                "summary": "Change payment requests status",
+                "operationId": "a71e976cbdaf9be86dd68f9d42e56e00",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "payment_request_ids": {
+                                        "description": "Array of payment request IDs",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "example": "9de1f353-4208-4620-901a-dc1a5978c374"
+                                        }
+                                    },
+                                    "status": {
+                                        "description": "Status of the payment request",
+                                        "type": "string",
+                                        "enum": [
+                                            "approved",
+                                            "rejected"
+                                        ],
+                                        "example": "rejected"
+                                    },
+                                    "comment": {
+                                        "description": "Optional comment about the payment request",
+                                        "type": "string",
+                                        "example": "Rejection related comment",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Payment Requests Pay Successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "example": "9de57955-998d-4345-ac43-405d145896b1"
+                                                    },
+                                                    "status": {
+                                                        "type": "string",
+                                                        "example": "rejected"
+                                                    },
+                                                    "file_id": {
+                                                        "type": "string",
+                                                        "example": "9de57955-839c-4d20-bbaa-181fce9efa96"
+                                                    },
+                                                    "payment_category": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string",
+                                                                "example": "9de1a27b-c068-4611-96fd-9bd9fd1f7a3c"
+                                                            },
+                                                            "title": {
+                                                                "type": "string",
+                                                                "example": "حمل و نقل"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2025-01-03T17:09:52.000000Z"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2025-01-03T17:09:52.000000Z"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "desc"
+                                                    },
+                                                    "price": {
+                                                        "type": "integer",
+                                                        "example": 12000
+                                                    },
+                                                    "sheba_number": {
+                                                        "type": "string",
+                                                        "example": "123456789123456789123456"
+                                                    },
+                                                    "user": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string",
+                                                                "example": "9de19ee8-58d7-4998-96c2-e12a4eaea912"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "user"
+                                                            },
+                                                            "email": {
+                                                                "type": "string",
+                                                                "example": "user@test.com"
+                                                            },
+                                                            "national_code": {
+                                                                "type": "string",
+                                                                "example": "1123456789"
+                                                            },
+                                                            "email_verified_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": null,
+                                                                "nullable": true
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2025-01-03T16:59:52.000000Z"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2025-01-03T16:59:52.000000Z"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "comments": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "Rejection related comment"
+                                                        },
+                                                        "nullable": true
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-01-05T14:58:07.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-01-05T14:58:07.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Payment Requests Pay Successful"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/files/{file}/download": {
+            "get": {
+                "tags": [
+                    "Payment Requests"
+                ],
+                "summary": "Download payment request attachment file",
+                "operationId": "e10941755b161b1cc7cda6152c6067a7",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "path",
+                        "description": "File ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "9de1f353-4208-4620-901a-dc1a5978c374"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "File downloaded successfully",
+                        "headers": {
+                            "Content-Disposition": {
+                                "description": "attachment; filename={filename}",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payment-requests/pay": {
+            "post": {
+                "tags": [
+                    "Payment Requests"
+                ],
+                "summary": "Pay approved payment requests",
+                "operationId": "66fc5824878bc940437098e2c4dfb641",
+                "responses": {
+                    "200": {
+                        "description": "Payment Requests Pay Successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "example": "9de523d2-b3d9-4b67-9a66-fc2c9ab31ac9"
+                                                    },
+                                                    "status": {
+                                                        "type": "string",
+                                                        "example": "paid"
+                                                    },
+                                                    "file_id": {
+                                                        "type": "string",
+                                                        "example": "9de523d2-a8ee-42ce-94d8-81c1a15f52b7"
+                                                    },
+                                                    "payment_category": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string",
+                                                                "example": "9de1a27b-c068-4611-96fd-9bd9fd1f7a3c"
+                                                            },
+                                                            "title": {
+                                                                "type": "string",
+                                                                "example": "حمل و نقل"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2025-01-03T17:09:52.000000Z"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2025-01-03T17:09:52.000000Z"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "desc"
+                                                    },
+                                                    "price": {
+                                                        "type": "integer",
+                                                        "example": 12000
+                                                    },
+                                                    "sheba_number": {
+                                                        "type": "string",
+                                                        "example": "123456789123456789123456"
+                                                    },
+                                                    "user": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string",
+                                                                "example": "9de19ee8-58d7-4998-96c2-e12a4eaea912"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "user"
+                                                            },
+                                                            "email": {
+                                                                "type": "string",
+                                                                "example": "user@test.com"
+                                                            },
+                                                            "national_code": {
+                                                                "type": "string",
+                                                                "example": "1123456789"
+                                                            },
+                                                            "email_verified_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": null,
+                                                                "nullable": true
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2025-01-03T16:59:52.000000Z"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2025-01-03T16:59:52.000000Z"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "comments": {
+                                                        "type": "string",
+                                                        "example": null,
+                                                        "nullable": true
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-01-05T10:59:00.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-01-05T14:32:47.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Payment Requests Pay Successful"
                                         }
                                     },
                                     "type": "object"
@@ -870,12 +832,8 @@
             "description": "Auth"
         },
         {
-            "name": "Carts",
-            "description": "Carts"
-        },
-        {
-            "name": "Products",
-            "description": "Products"
+            "name": "Payment Requests",
+            "description": "Payment Requests"
         }
     ]
 }
