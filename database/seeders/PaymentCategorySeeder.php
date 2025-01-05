@@ -13,9 +13,13 @@ class PaymentCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        PaymentCategory::insert([
+        $categories = collect([
             ['title' => 'حمل و نقل'],
-            ['title' => 'خرید تجهیزات '],
+            ['title' => 'خرید تجهیزات'],
         ]);
+
+        $categories->each(function ($category) {
+            PaymentCategory::create($category);
+        });
     }
 }

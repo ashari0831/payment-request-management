@@ -40,6 +40,7 @@ php artisan migrate --seed
 ```
 php artisan queue:work
 ```
+
 ```
 php artisan schedule:work
 ```
@@ -61,13 +62,13 @@ http://127.0.0.1:8000/api/documentation
 ##### Admin User Credentials
 
 ```
-"email":"mehefil951@owube.com",
+"email":"admin@test.com",
 "password":"123"
 ```
 
 ##### Non-admin User Credentials
 
 ```
-"email":"test@test.com",
+"email":"user@test.com",
 "password":"123"
 ```

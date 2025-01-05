@@ -13,7 +13,7 @@ class BankSeeder extends Seeder
      */
     public function run(): void
     {
-        Bank::insert([
+        $banks = collect([
             [
                 'sheba_prefix' => '11',
                 'api_endpoint' => 'https://test1.ir/api/pay',
@@ -30,5 +30,9 @@ class BankSeeder extends Seeder
                 'name' => 'test3',
             ]
         ]);
+
+        $banks->each(function ($bank) {
+            Bank::create($bank);
+        });
     }
 }
