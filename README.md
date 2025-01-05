@@ -72,3 +72,5 @@ http://127.0.0.1:8000/api/documentation
 "email":"user@test.com",
 "password":"123"
 ```
+
+**Note:** You can uncomment commented lines in `app/Services/PaymentRequestService.php` to have the full functionality but it requires correct email configuration for application and real emails for users. Also, real API endpoints for banks.
